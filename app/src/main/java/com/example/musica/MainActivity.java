@@ -6,14 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     GestioneBrani gb;
     private Button BtnCerca;
-    private Button BtnAdd;
-    private EditText TxtTitolo;
-    private EditText TxtGenere;
-    private EditText TxtAutore;
+     Button BtnAdd;
+     EditText TxtTitolo;
+     EditText TxtGenere;
+    EditText TxtAutore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,18 +27,20 @@ public class MainActivity extends AppCompatActivity {
         TxtAutore = (EditText) findViewById(R.id.TxtAutore);
 
         BtnCerca = (Button)findViewById(R.id.BtnFind);
+        BtnAdd = (Button)findViewById(R.id.BtnAdd);
+
         BtnCerca.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gb.toString();
+                String aut = gb.visualizzaAutore(TxtAutore.getText().toString());
+                Toast.makeText(getApplicationContext(), aut, Toast.LENGTH_LONG).show();
             }
         });
 
-        BtnAdd = (Button)findViewById(R.id.BtnAdd);
         BtnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String tit = (TxtTitolo.getText().toString());
             }
         });
     }
