@@ -10,6 +10,12 @@ public class Brano {
     private int durata;
     private Date dataLancio;
 
+    public Brano(String titolo, String autore, String genere){
+        this.titolo = titolo;
+        this.autore = autore;
+        this.genere = genere;
+    }
+
     public String getTitolo() {
         return this.titolo;
     }
