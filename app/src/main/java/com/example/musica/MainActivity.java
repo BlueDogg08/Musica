@@ -2,6 +2,7 @@ package com.example.musica;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -42,20 +43,23 @@ public class MainActivity extends AppCompatActivity {
         BtnCerca.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String aut = gb.visualizzaAutore(TxtAutore.getText().toString());
-                Toast.makeText(getApplicationContext(), aut, Toast.LENGTH_LONG).show();
+                String brn = gb.visualizzaTitoli();
+                Toast.makeText(getApplicationContext(), brn, Toast.LENGTH_LONG).show();
+
+                Intent iDettBrani = new Intent(getApplicationContext(), ActivityBrani.class);
+                iDettBrani.putExtra("brn", brn);
+                startActivity(iDettBrani);
             }
         });
 
         BtnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                /*Toast.makeText(getApplicationContext(), generesel, Toast.LENGTH_LONG).show();*/
-                String tit = TxtAutore.getText().toString());
-                String aut = TxtTitolo.getText().toString());
+                String tit = TxtAutore.getText().toString();
+                String aut = TxtTitolo.getText().toString();
                 String generesel = SpnGeneri.getSelectedItem().toString();
                 gb.aggiungiBrano(tit, aut, generesel);
+                Toast.makeText(getApplicationContext(), "Brano aggiunto: "+tit, Toast.LENGTH_LONG).show();
             }
         });
     }
